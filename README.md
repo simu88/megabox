@@ -55,6 +55,14 @@ DAO(DATA ACCESS OBJECT)를 저장하기 위한 폴더입니다.
 
 DAO는 JAVA와 데이터베이스를 연결하는 입니다. 좀 더 노골적으로 말하면 CRUD(Create, Read, Update, Delete)와 관련된 메소드를 구현하기 위한 객체입니다.
 
+예를 들어 hsbank의 DB.java의 insertBanker 메소드는 Banker 타입의 객체를 피라미터로 받아 데이터베이스에 INSERT 쿼리문을 실행합니다.
+
+이처럼 데이터베이스에 직접 접근하는 모듈은 전부 DAO로 작성합니다.
+
+모든 DAO 클래스의 표기법은 파스칼 표기법 + DAO로 작성합니다.
+
+예) AccountDAO
+
 
 
 
