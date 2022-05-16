@@ -69,6 +69,12 @@ DAO는 JAVA와 데이터베이스를 연결하는 입니다. 좀 더 노골적�
 
 예를 들어 DB.java의 getAllBankersRS 메소드는 SELECT 쿼리문을 실행하여 ResultSet 타입의 형태로 반환합니다.
 
+여기서 쿼리문을 실행하는 메소드는 DAO의 형태로 분리하여 별개로 구현하고, 데이터베이스에서 가져온 데이터를 ResultSet으로 반환하는 메소드는 service 모듈로 따로 구현할 수 있습니다.
+
+모든 service의 표기법은 파스칼 표기법 + Service로 작성합니다.
+
+예) LoginService
+
 
 
 
