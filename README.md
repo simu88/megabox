@@ -18,6 +18,23 @@
 &nbsp;&nbsp;    /js   
 &nbsp;&nbsp;    /img   
     /view   
+    
+    
+    
+하나씩 순서대로 설명합니다.
 
+### /src
+
+자바 소스코드를 저장하기 위한 폴더입니다.
+
+#### src/common
+
+각 코드에서 공통적으로 쓰이는 모듈을 저장하는 폴더입니다.
+
+예를 들어 Mysql 서버에 저장하기 위한 계정 정보를 담은 설정파일 등이 있습니다.
+
+#### /src/model
+
+DTO(DATA TRANSFER OBJECT)를 저장하는 폴더입니다.
 
 
