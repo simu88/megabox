@@ -13,7 +13,7 @@
 &nbsp;  /service    
 /build   
 /WebContent   
-&nbsp;  /resource   
+&nbsp;  /resources   
 &nbsp;&nbsp;    /css   
 &nbsp;&nbsp;    /js   
 &nbsp;&nbsp;    /img   
@@ -57,7 +57,7 @@ DAO는 JAVA와 데이터베이스를 연결하는 입니다. 좀 더 노골적�
 
 예를 들어 hsbank의 DB.java의 insertBanker 메소드는 Banker 타입의 객체를 피라미터로 받아 데이터베이스에 INSERT 쿼리문을 실행합니다.
 
-이처럼 데이터베이스에 직접 접근하는 모듈은 전부 DAO로 작성합니다.
+이처럼 데이터베이스에 직접 접근하여 쿼리를 날리는 기능은 전부 DAO 로 작성합니다.
 
 모든 DAO 클래스의 표기법은 파스칼 표기법 + DAO로 작성합니다.
 
@@ -74,6 +74,20 @@ DAO는 JAVA와 데이터베이스를 연결하는 입니다. 좀 더 노골적�
 모든 service의 표기법은 파스칼 표기법 + Service로 작성합니다.
 
 예) LoginService
+
+### Webcontent
+
+#### WebContent/resources
+
+정적 파일을 저장하기 위한 폴더입니다.
+
+이미지 파일, css 파일, 자바스크립트 파일 등을 저장합니다.
+
+#### WebContent/view
+
+뷰를 저장하는 폴더입니다.
+
+JSP와 HTML 파일은 모두 여기에 담습니다.
 
 
 
