@@ -9,7 +9,7 @@
 /src   
 &nbsp;  /common   
 &nbsp;  /model   
-&nbsp;  /repository    
+&nbsp;  /dao    
 &nbsp;  /service    
 /build   
 /WebContent   
@@ -48,6 +48,14 @@ hsbank에서 Account.java나 Banker.java와 하는 역할이 같습니다.
 모든 DTO 클래스의 표기법은 파스칼 표기법 + DTO로 작성합니다.
 
 예) AccountDTO 
+
+#### /src/dao
+
+DAO(DATA ACCESS OBJECT)를 저장하기 위한 폴더입니다.
+
+DAO는 JAVA와 데이터베이스를 연결하는 입니다. 좀 더 노골적으로 말하면 CRUD(Create, Read, Update, Delete)와 관련된 메소드를 구현하기 위한 객체입니다.
+
+
 
 
 
