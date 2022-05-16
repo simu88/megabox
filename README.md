@@ -25,17 +25,17 @@
 
 ### /src
 
-자바 소스코드를 저장하기 위한 폴더입니다.
+자바 소스코드를 저장하기 위한 패키지입니다.
 
 #### src/common
 
-각 코드에서 공통적으로 쓰이는 모듈을 저장하는 폴더입니다.
+각 코드에서 공통적으로 쓰이는 모듈을 저장하는 패키지입니다.
 
 예를 들어 Mysql 서버에 저장하기 위한 계정 정보를 담은 설정파일 등이 있습니다.
 
 #### /src/model
 
-DTO(DATA TRANSFER OBJECT)를 저장하는 폴더입니다.
+DTO(DATA TRANSFER OBJECT)를 저장하는 패키지입니다.
 
 DTO란 사용자가 입력하는 데이터를 객체화 하여 데이터베이스에 전달하기 위한 클래스입니다.
 
@@ -51,7 +51,7 @@ hsbank에서 Account.java나 Banker.java와 하는 역할이 같습니다.
 
 #### /src/dao
 
-DAO(DATA ACCESS OBJECT)를 저장하기 위한 폴더입니다.
+DAO(DATA ACCESS OBJECT)를 저장하기 위한 패키지입니다.
 
 DAO는 JAVA와 데이터베이스를 연결하는 입니다. 좀 더 노골적으로 말하면 CRUD(Create, Read, Update, Delete)와 관련된 메소드를 구현하기 위한 객체입니다.
 
@@ -62,6 +62,12 @@ DAO는 JAVA와 데이터베이스를 연결하는 입니다. 좀 더 노골적�
 모든 DAO 클래스의 표기법은 파스칼 표기법 + DAO로 작성합니다.
 
 예) AccountDAO
+
+#### /src/service
+
+비즈니스 로직을 담는 패키지입니다.
+
+예를 들어 DB.java의 getAllBankersRS 메소드는 SELECT 쿼리문을 실행하여 ResultSet 타입의 형태로 반환합니다.
 
 
 
