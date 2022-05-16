@@ -47,7 +47,7 @@ hsbank에서 Account.java나 Banker.java와 하는 역할이 같습니다.
 
 모든 DTO 클래스의 표기법은 파스칼 표기법 + DTO로 작성합니다.
 
-예) 
+예) AccountDTO 
 
 
 
