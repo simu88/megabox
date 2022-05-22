@@ -6,7 +6,7 @@ import common.DBConfig;
 
 public class SignUpDAO {
 	
-	public static void register(String id, String password, String email, String phone) throws SQLException {
+	public static void register(String id, String password, String email, String phone, int role, int review_count) throws SQLException {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -18,10 +18,10 @@ public class SignUpDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch(SQLException e){
-            System.out.println("ø°∑Ø: " + e);
+            System.out.println("ÏóêÎü¨: " + e);
         }
 		
-		//DAO ∞¯≈Î ƒ⁄µÂ
+		//DAO Í≥µÌÜµ ÏΩîÎìú
 		
 		String sql = "INSERT INTO customer(id, password, email, phone, role, review_count) VALUES (?, ?, ?, ?, ?, ?);";
 		
@@ -31,8 +31,8 @@ public class SignUpDAO {
 		pstmt.setString(2, password);
 		pstmt.setString(3, email);
 		pstmt.setString(4, phone);
-		pstmt.setInt(5, 1);
-		pstmt.setInt(6, 0);
+		pstmt.setInt(5, role);
+		pstmt.setInt(6, review_count);
 		
 		pstmt.executeUpdate();
 		
