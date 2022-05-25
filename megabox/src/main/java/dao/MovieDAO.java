@@ -11,7 +11,7 @@ import model.*;
 import java.util.*;
 
 public class MovieDAO {
-	public static void createMovie(MovieDTO movieDTO) {
+	public static void createMovie(MovieDTO movieDTO) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -36,7 +36,7 @@ public class MovieDAO {
 		
 		//DAO 공통 코드
 		
-		String sql = "INSERT INTO movie VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO movie(title, ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -64,7 +64,8 @@ public class MovieDAO {
 			e.printStackTrace();
 		}
 		
-		
+		pstmt.close();
+		con.close();
 		
 	}
 }
