@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import dao.*;
 
 public class CustomerService {
-	public static boolean checkID(String id) {
+	public static boolean checkID(String id) throws SQLException {
 		ResultSet rs = CustomerDAO.checkID(id);
 		
 		int isIDOverlap = 0;
@@ -19,7 +19,7 @@ public class CustomerService {
 			e.printStackTrace();
 		}
 		
-		//¸¸¾à isIDOverlapÀÌ 0º¸´Ù Å©¸é ¾ÆÀÌµğ Áßº¹. 0ÀÌ¸é ¹®Á¦ ¾øÀ¸¹Ç·Î false ¹İÈ¯
+		//ë§Œì•½ isIDOverlapì´ 0ë³´ë‹¤ í¬ë©´ ì•„ì´ë”” ì¤‘ë³µ. 0ì´ë©´ ë¬¸ì œ ì—†ìœ¼ë¯€ë¡œ false ë°˜í™˜
 		if (isIDOverlap > 0)
 			return true;
 		else
