@@ -9,8 +9,8 @@ import java.sql.SQLException;
 import common.DBConfig;
 
 public class CustomerDAO {
-	//°¡ÀÔ°ú ±ÇÇÑ Á¶È¸¸¦ Á¦¿ÜÇÑ ÀÌ¿ëÀÚ¿Í °ü·ÃµÈ DAO
-	public static ResultSet checkID(String id) {
+	//ê°€ì…ê³¼ ê¶Œí•œ ì¡°íšŒë¥¼ ì œì™¸í•œ ì´ìš©ìì™€ ê´€ë ¨ëœ DAO
+	public static ResultSet checkID(String id) throws SQLException {
 		
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -23,7 +23,7 @@ public class CustomerDAO {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch(SQLException e){
-	            System.out.println("¿¡·¯: " + e);
+	            System.out.println("ì—ëŸ¬: " + e);
 	        }
 			
 			String sql = "SELECT COUNT(*) FROM customer where id =?";
@@ -36,6 +36,9 @@ public class CustomerDAO {
 				e.printStackTrace();
 			}
 		
+			pstmt.close();
+			con.close();
+			
 			return rs;
 			
 	}
