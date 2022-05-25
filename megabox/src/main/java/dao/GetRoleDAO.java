@@ -3,15 +3,17 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import common.DBConfig;
 
 public class GetRoleDAO {
-
-	public static int getRole(String id) {
+	//회원의 아이디를 입력하면 권한을 가져오는 메소드
+	public static ResultSet getRole(String id) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
 		try {
 			Class.forName(DBConfig.driver);
@@ -20,10 +22,16 @@ public class GetRoleDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch(SQLException e){
-            System.out.println("����: " + e);
+            System.out.println("에러: " + e);
         }
 		
-		return 1;
+		String sql = "SELECT role FROM customer WHERE id=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, id);
+		rs = pstmt.executeQuery();
+
+		
+		return rs;
 	}
 	
 }
