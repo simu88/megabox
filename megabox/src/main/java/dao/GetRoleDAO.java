@@ -30,6 +30,8 @@ public class GetRoleDAO {
 		pstmt.setString(1, id);
 		rs = pstmt.executeQuery();
 
+		pstmt.close();
+		con.close();
 		
 		return rs;
 	}
