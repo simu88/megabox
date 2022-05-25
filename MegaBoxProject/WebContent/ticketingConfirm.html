@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>예매 현황 조회</title>
+<style>
+#left {
+    width:200px; 
+    height:300px;
+    float:left;
+    margin-left:300px;
+}
+#middle {
+    width:500px; 
+    height:250px;
+    float:left;
+}
+#td,tr{
+	width:20px;
+	height:40px;
+	text-align:center
+}
+</style>
+</head>
+<body>
+	<iframe class="menu" src=beforeMenu.html name=home scrolling=no style="width:100%; height:165px; border:none; text-align:center;"></iframe>
+	<div style="display:flex">
+		<div id="left">	
+		<input type=button value="등록한 영화" style="width: 100px;height: 40px;">
+		<input type=button value="신규 등록" style="width: 100px;height: 40px;">
+		<input type=button value="예매 현황" style="width: 100px;height: 40px;">
+		</div>
+		
+		<div style="float:left "display:inline;">
+		<div id="middle">
+		<table border=0>
+		<tr>
+       	<td>
+       		<form>
+       		<select name="movie">
+       		<option value="first" selected>닥터스트레인지 대혼돈의 멀티버스</option>
+       		<option value="second">세븐틴파워 오브 러브 더 무비</option>
+       		<option value="third">덤블도어의 비밀</option>
+  		    <option value="forth">니부모 얼굴이 보고싶다</option>
+       		</select>
+       		</form>
+       	</td>
+       	</tr>
+     	<tr>
+       	<td>
+			
+       	</td>
+        <td>
+       		<input type="text" name="review" size="40" placeholder="상영관을 입력해주세요">
+       	</td>
+       	</tr>
+      	<tr>
+       	<td>
+       		 <p>상영일시</p>
+       	</td>
+        <td>
+       		<input type="text" name="review" size="40" placeholder="상영시간을 입력해주세요">       		
+       	</td>
+      	</tr>
+        </table>
+	  	<div style="width:400px; height:200px; margin-left:55%; margin-top:35%;">
+	  	</div>
+	</div>	
+	</div>
+</body>
+</html>
