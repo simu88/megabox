@@ -76,7 +76,7 @@ public class MovieDAO {
 	}
 	
 	//영화 정보 전체 조회
-	public static ResultSet viewAllMovies() throws SQLException {
+	public static ResultSet readAllMovies() throws SQLException {
 		try {
 			Class.forName(DBConfig.driver);
 			con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
@@ -96,7 +96,7 @@ public class MovieDAO {
 	}
 	
 	//제목으로 영화 조회
-	public static ResultSet viewMovieByTitle(String title) throws SQLException {
+	public static ResultSet readMovieByTitle(String title) throws SQLException {
 		try {
 			Class.forName(DBConfig.driver);
 			con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
@@ -137,7 +137,7 @@ public class MovieDAO {
             System.out.println("에러: " + e);
         }
 		
-		String sql = "UPDATE movie SET title=?, SET title_origin=?, SET thumbnail_image=? SET release_date=?, SET summary=?, SET type=?, SET director=?, SET genre=?, SET rating=?, SET cast=?, SET preview_url=? WHERE title=?";
+		String sql = "UPDATE movie SET title=?, SET title_origin=?, SET thumbnail_image=? SET release_date=?, SET summary=?, SET type=?, SET director=?, SET genre=?, SET rating=?, SET cast=?, SET preview_url=?, SET review_count=?, SET average_score=?, SET sum_score=? WHERE title=?";
 		
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, movieDTO.getTitle());
@@ -151,7 +151,10 @@ public class MovieDAO {
 		pstmt.setInt(9, movieDTO.getRating());
 		pstmt.setString(10, movieDTO.getCast());
 		pstmt.setString(11, movieDTO.getPreview_url());
-		pstmt.setString(12, movieDTO.getTitle());
+		pstmt.setInt(12, movieDTO.getReview_count());
+		pstmt.setDouble(13, movieDTO.getAverage_score());
+		pstmt.setInt(14, movieDTO.getSum_score());
+		pstmt.setString(15, movieDTO.getTitle());
 		
 		pstmt.executeUpdate();
 		pstmt.close();
