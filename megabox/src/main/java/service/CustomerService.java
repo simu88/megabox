@@ -40,10 +40,17 @@ public class CustomerService {
 		return rs;
 	}
 	
+	//아이디로 회원 조회
 	public static CustomerDTO viewCustomerByID(String id) throws SQLException {
 		CustomerDTO customerDTO = CustomerDAO.findCustomerByID(id);
 		
 		return customerDTO;
+	}
+	
+	public static void editCustomer(String ID, String password, String email, String phone) throws SQLException {
+		CustomerDTO customerDTO = new CustomerDTO(ID, PasswordEncryptService.passwordEncrypt(password), email, phone, 0, 0);
+		
+		CustomerDAO.updateCustomer(customerDTO);
 	}
 	}
 
