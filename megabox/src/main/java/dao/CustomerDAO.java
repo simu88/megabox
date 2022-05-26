@@ -1,5 +1,6 @@
 package dao;
 
+import model.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,6 +15,51 @@ public class CustomerDAO {
 	static PreparedStatement pstmt = null;
 	static ResultSet rs = null;
 	//가입과 권한 조회를 제외한 이용자와 관련된 DAO
+	
+	//전체 회원 조회
+	public static ResultSet viewAllCutomer() throws SQLException {
+		
+		try {
+			Class.forName(DBConfig.driver);
+			con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch(SQLException e){
+            System.out.println("에러: " + e);
+        }
+		
+		String sql = "SELECT id, email, phone, role, review_count FROM customer";
+		
+		pstmt = con.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		
+		return rs;
+	}
+	
+	//아이디 사용해 회원 찾기
+	public static ResultSet findCustomerByID(String id) throws SQLException {
+		
+		try {
+			Class.forName(DBConfig.driver);
+			con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch(SQLException e){
+            System.out.println("에러: " + e);
+        }
+		
+		String sql = "SELECT id, email, phone, role, review_count FROM customer WHERE id=?";
+		
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, id);
+		rs = pstmt.executeQuery();
+		
+		return rs;
+	}
+	
+	//회원가입 시 아이디 중복 체크를 위한 로직
 	public static ResultSet checkID(String id) throws SQLException {
 				
 			try {
@@ -41,6 +87,35 @@ public class CustomerDAO {
 			
 			return rs;
 			
+	}
+	
+	//이용자 정보 수정하는 update 메소드
+	public static void updateCustomer(CustomerDTO customerDTO) throws SQLException {
+		try {
+			Class.forName(DBConfig.driver);
+			con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch(SQLException e){
+            System.out.println("에러: " + e);
+        }
+		
+		String sql = "UPDATE customer SET password=?, SET email=?, SET phone=? WHERE id=?";
+		
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, customerDTO.getPassword());
+		pstmt.setString(2, customerDTO.getEmail());
+		pstmt.setString(3, customerDTO.getPhone());
+		pstmt.setString(4, customerDTO.getID());
+		pstmt.executeUpdate();
+		
+		
+		pstmt.close();
+		con.close();
+		
+
+		
 	}
 
 }
