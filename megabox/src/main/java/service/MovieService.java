@@ -2,6 +2,7 @@ package service;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.Vector;
 
 import dao.*;
 import model.*;
@@ -28,17 +29,17 @@ public class MovieService {
 	}
 	
 	//영화 정보 전체 조회
-	public static ResultSet viewAllMovies() throws SQLException {
-		ResultSet rs = MovieDAO.readAllMovies();
+	public static Vector viewAllMovies() throws SQLException {
+		Vector vc = MovieDAO.readAllMovies();
 		
-		return rs;
+		return vc;
 	}
 	
 	//제목으로 영화 검색해서 조회
-	public static ResultSet viewMovieByTitle(String title) throws SQLException {
-		ResultSet rs = MovieDAO.readMovieByTitle(title);
+	public static Vector viewMovieByTitle(String title) throws SQLException {
+		Vector vc = MovieDAO.readMovieByTitle(title);
 		
-		return rs;
+		return vc;
 	}
 	
 	//영화 정보 수정
