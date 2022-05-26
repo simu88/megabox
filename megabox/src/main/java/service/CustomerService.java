@@ -9,7 +9,7 @@ import dao.*;
 
 public class CustomerService {
 	
-	//¾ÆÀÌµğ Áßº¹ Ã¼Å© ¸Ş¼Òµå
+	//ì•„ì´ë”” ì¤‘ë³µ ì²´í¬ ë©”ì†Œë“œ
 	public static boolean checkID(String id) throws SQLException {
 		ResultSet rs = CustomerDAO.checkID(id);
 		
@@ -24,14 +24,14 @@ public class CustomerService {
 			e.printStackTrace();
 		}
 		
-		//¸¸¾à isIDOverlapÀÌ 0º¸´Ù Å©¸é ¾ÆÀÌµğ Áßº¹. 0ÀÌ¸é ¹®Á¦ ¾øÀ¸¹Ç·Î false ¹İÈ¯
+		//ë§Œì•½ isIDOverlapì´ 0ë³´ë‹¤ í¬ë©´ ì•„ì´ë”” ì¤‘ë³µ. 0ì´ë©´ ë¬¸ì œ ì—†ìœ¼ë¯€ë¡œ false ë°˜í™˜
 		if (isIDOverlap > 0)
 			return true;
 		else
 			return false;
 	}
 	
-	//¸ğµç È¸¿øÀÇ Á¤º¸ °¡Á®¿À±â
+	//ëª¨ë“  íšŒì›ì˜ ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 	public static ResultSet viewAllCustomer() throws SQLException {
 		ResultSet rs = null;
 		
@@ -40,13 +40,14 @@ public class CustomerService {
 		return rs;
 	}
 	
-	//¾ÆÀÌµğ·Î È¸¿ø Á¶È¸
+	//ì•„ì´ë””ë¡œ íšŒì› ì¡°íšŒ
 	public static CustomerDTO viewCustomerByID(String id) throws SQLException {
 		CustomerDTO customerDTO = CustomerDAO.findCustomerByID(id);
 		
 		return customerDTO;
 	}
 	
+	//íšŒì› ì •ë³´ ìˆ˜ì •
 	public static void editCustomer(String ID, String password, String email, String phone) throws SQLException {
 		CustomerDTO customerDTO = new CustomerDTO(ID, PasswordEncryptService.passwordEncrypt(password), email, phone, 0, 0);
 		
