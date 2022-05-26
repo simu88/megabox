@@ -4,8 +4,8 @@ import java.sql.SQLException;
 
 import dao.*;
 
-public class IsAdmin {
-	//ê´€ë¦¬ìì¸ì§€ ì¼ë°˜ íšŒì›ì¸ì§€ íŒë‹¨í•˜ëŠ” ë©”ì†Œë“œ
+public class IsAdminService {
+	//°ü¸®ÀÚÀÎÁö ÀÏ¹İ È¸¿øÀÎÁö ÆÇ´ÜÇÏ´Â ¸Ş¼Òµå
 	public static boolean isAdmin(String id) throws SQLException {
 		ResultSet rs = GetRoleDAO.getRole(id);
 		
@@ -15,7 +15,7 @@ public class IsAdmin {
 			role = rs.getInt(1);
 		}
 		
-		//ê¶Œí•œì´ 0ì´ë©´ ê´€ë¦¬ì ì¦‰ true. 1ì´ë©´ ì¼ë°˜ íšŒì›ì´ë¯€ë¡œ false ë°˜í™˜
+		//±ÇÇÑÀÌ 0ÀÌ¸é °ü¸®ÀÚ Áï true. 1ÀÌ¸é ÀÏ¹İ È¸¿øÀÌ¹Ç·Î false ¹İÈ¯
 		if (role == 0)
 			return true;
 		else

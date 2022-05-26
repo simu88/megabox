@@ -1,22 +1,32 @@
 package service;
+
+import dao.*;
 import java.sql.SQLException;
 
 import dao.*;
 import model.CustomerDTO;
 import model.*;
 
-//íšŒì›ê°€ì… ì²˜ë¦¬ ëª¨ë“ˆ
+//È¸¿ø°¡ÀÔ Ã³¸® ¸ğµâ
 public class SignUpService {
-	public void signUp(String ID, String password, String email, String phone) {
-		//CustomerDTO ê°ì²´ ìƒì„±
+	public static void signUp(String ID, String password, String email, String phone) throws SQLException {
+		//CustomerDTO °´Ã¼ »ı¼º
 		CustomerDTO customerDTO = new CustomerDTO(ID, PasswordEncryptService.passwordEncrypt(password), email, phone, 1, 0);
 		
-		//DAO ë©”ì†Œë“œì— DTO getter ë©”ì†Œë“œë¡œ ê°’ ì…ë ¥
-		try {
-			SignUpDAO.register(customerDTO.getID(), customerDTO.getPassword(), customerDTO.getEmail(), customerDTO.getEmail(), customerDTO.getRole(), customerDTO.getReview_count());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		boolean checkID = CustomerService.checkID(ID);
+		
+		if (checkID == true)
+			return;
+		else {
+			try {
+				SignUpDAO.register(customerDTO.getID(), customerDTO.getPassword(), customerDTO.getEmail(), customerDTO.getEmail(), customerDTO.getRole(), customerDTO.getReview_count());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+			
+		
 	}
+	
 }
