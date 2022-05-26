@@ -38,7 +38,7 @@ public class CustomerDAO {
 	}
 	
 	//아이디 사용해 회원 찾기
-	public static ResultSet findCustomerByID(String id) throws SQLException {
+	public static CustomerDTO findCustomerByID(String id) throws SQLException {
 		
 		try {
 			Class.forName(DBConfig.driver);
@@ -56,7 +56,17 @@ public class CustomerDAO {
 		pstmt.setString(1, id);
 		rs = pstmt.executeQuery();
 		
-		return rs;
+		CustomerDTO customerDTO = new CustomerDTO("", "", "", "", 0, 0);
+		
+		while (rs.next() ) {
+			customerDTO.setID(rs.getString(1));
+			customerDTO.setEmail(rs.getString(2));
+			customerDTO.setPhone(rs.getString(3));
+			customerDTO.setRole(rs.getInt(4));
+			customerDTO.setReview_count(rs.getInt(5));
+		}
+		
+		return customerDTO;
 	}
 	
 	//회원가입 시 아이디 중복 체크를 위한 로직
