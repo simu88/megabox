@@ -17,7 +17,7 @@ public class CustomerDAO {
 	//가입과 권한 조회를 제외한 이용자와 관련된 DAO
 	
 	//전체 회원 조회
-	public static ResultSet viewAllCutomer() throws SQLException {
+	public static ResultSet readAllCutomer() throws SQLException {
 		
 		try {
 			Class.forName(DBConfig.driver);
