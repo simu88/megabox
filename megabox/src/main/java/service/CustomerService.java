@@ -1,10 +1,15 @@
 package service;
+import dao.*;
+import model.CustomerDTO;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import dao.*;
 
 public class CustomerService {
+	
+	//¾ÆÀÌµð Áßº¹ Ã¼Å© ¸Þ¼Òµå
 	public static boolean checkID(String id) throws SQLException {
 		ResultSet rs = CustomerDAO.checkID(id);
 		
@@ -19,11 +24,26 @@ public class CustomerService {
 			e.printStackTrace();
 		}
 		
-		//ë§Œì•½ isIDOverlapì´ 0ë³´ë‹¤ í¬ë©´ ì•„ì´ë”” ì¤‘ë³µ. 0ì´ë©´ ë¬¸ì œ ì—†ìœ¼ë¯€ë¡œ false ë°˜í™˜
+		//¸¸¾à isIDOverlapÀÌ 0º¸´Ù Å©¸é ¾ÆÀÌµð Áßº¹. 0ÀÌ¸é ¹®Á¦ ¾øÀ¸¹Ç·Î false ¹ÝÈ¯
 		if (isIDOverlap > 0)
 			return true;
 		else
 			return false;
+	}
+	
+	//¸ðµç È¸¿øÀÇ Á¤º¸ °¡Á®¿À±â
+	public static ResultSet viewAllCustomer() throws SQLException {
+		ResultSet rs = null;
+		
+		rs = CustomerDAO.readAllCutomer();
+		
+		return rs;
+	}
+	
+	public static CustomerDTO viewCustomerByID(String id) throws SQLException {
+		CustomerDTO customerDTO = CustomerDAO.findCustomerByID(id);
+		
+		return customerDTO;
 	}
 	}
 
