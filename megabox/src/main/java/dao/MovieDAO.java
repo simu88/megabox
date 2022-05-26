@@ -11,9 +11,12 @@ import model.*;
 import java.util.*;
 
 public class MovieDAO {
+	
+	static Connection con = null;
+	static PreparedStatement pstmt = null;
+	
 	public static void createMovie(MovieDTO movieDTO) throws SQLException {
-		Connection con = null;
-		PreparedStatement pstmt = null;
+		
 		
 		Date date = new Date(0);
 		
@@ -31,10 +34,10 @@ public class MovieDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch(SQLException e){
-            System.out.println("ì—ëŸ¬: " + e);
+            System.out.println("¿¡·¯: " + e);
         }
 		
-		//DAO ê³µí†µ ì½”ë“œ
+		//DAO °øÅë ÄÚµå
 		
 		String sql = "INSERT INTO movie(title, ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		

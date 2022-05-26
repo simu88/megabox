@@ -6,10 +6,12 @@ import common.DBConfig;
 
 public class SignUpDAO {
 	
+	static Connection con = null;
+	static PreparedStatement pstmt = null;
+	
 	public static void register(String id, String password, String email, String phone, int role, int review_count) throws SQLException {
 		
-		Connection con = null;
-		PreparedStatement pstmt = null;
+		
 		
 		try {
 			Class.forName(DBConfig.driver);
@@ -18,10 +20,10 @@ public class SignUpDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch(SQLException e){
-            System.out.println("ì—ëŸ¬: " + e);
+            System.out.println("¿¡·¯: " + e);
         }
 		
-		//DAO ê³µí†µ ì½”ë“œ
+		//DAO °øÅë ÄÚµå
 		
 		String sql = "INSERT INTO customer(id, password, email, phone, role, review_count) VALUES (?, ?, ?, ?, ?, ?);";
 		

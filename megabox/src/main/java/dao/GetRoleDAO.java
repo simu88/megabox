@@ -9,11 +9,14 @@ import java.sql.SQLException;
 import common.DBConfig;
 
 public class GetRoleDAO {
-	//íšŒì›ì˜ ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ë©´ ê¶Œí•œì„ ê°€ì ¸ì˜¤ëŠ” ë©”ì†Œë“œ
+	
+	static Connection con = null;
+	static PreparedStatement pstmt = null;
+	static ResultSet rs = null;
+	
+	//È¸¿øÀÇ ¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¸é ±ÇÇÑÀ» °¡Á®¿À´Â ¸Ş¼Òµå
 	public static ResultSet getRole(String id) throws SQLException {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+
 		
 		try {
 			Class.forName(DBConfig.driver);
@@ -22,7 +25,7 @@ public class GetRoleDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch(SQLException e){
-            System.out.println("ì—ëŸ¬: " + e);
+            System.out.println("¿¡·¯: " + e);
         }
 		
 		String sql = "SELECT role FROM customer WHERE id=?";

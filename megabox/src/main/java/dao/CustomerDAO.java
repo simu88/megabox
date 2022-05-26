@@ -9,13 +9,13 @@ import java.sql.SQLException;
 import common.DBConfig;
 
 public class CustomerDAO {
-	//ê°€ì…ê³¼ ê¶Œí•œ ì¡°íšŒë¥¼ ì œì™¸í•œ ì´ìš©ìì™€ ê´€ë ¨ëœ DAO
+	
+	static Connection con = null;
+	static PreparedStatement pstmt = null;
+	static ResultSet rs = null;
+	//°¡ÀÔ°ú ±ÇÇÑ Á¶È¸¸¦ Á¦¿ÜÇÑ ÀÌ¿ëÀÚ¿Í °ü·ÃµÈ DAO
 	public static ResultSet checkID(String id) throws SQLException {
-		
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			
+				
 			try {
 				Class.forName(DBConfig.driver);
 				con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
@@ -23,7 +23,7 @@ public class CustomerDAO {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch(SQLException e){
-	            System.out.println("ì—ëŸ¬: " + e);
+	            System.out.println("¿¡·¯: " + e);
 	        }
 			
 			String sql = "SELECT COUNT(*) FROM customer where id =?";
