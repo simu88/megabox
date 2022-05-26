@@ -76,7 +76,7 @@ public class MovieDAO {
 	}
 	
 	//영화 정보 전체 조회
-	public static ResultSet readAllMovies() throws SQLException {
+	public static Vector readAllMovies() throws SQLException {
 		try {
 			Class.forName(DBConfig.driver);
 			con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
@@ -89,14 +89,41 @@ public class MovieDAO {
 		
 		String sql = "SELECT title, title_origin, thumbnail_image, release_date, summary, type, director, genre, rating, cast, preview_url, review_count, average_score, sum_score FROM movie";
 		
+		Vector<MovieDTO> vector = new Vector<>();
+		
+		MovieDTO movieDTO = null;
+		
+		while (rs.next()) {
+			movieDTO.setTitle(rs.getString(1));
+			movieDTO.setTitle_origin(rs.getString(2));
+			movieDTO.setThumbnail_image(rs.getString(3));
+			movieDTO.setRelease_date(rs.getDate(4));
+			movieDTO.setSummary(rs.getString(5));
+			movieDTO.setType(rs.getString(6));
+			movieDTO.setDirector(rs.getString(7));
+			movieDTO.setGenre(rs.getString(8));
+			movieDTO.setRating(rs.getInt(9));
+			movieDTO.setCast(rs.getString(10));
+			movieDTO.setPreview_url(rs.getString(11));
+			movieDTO.setReview_count(rs.getInt(12));
+			movieDTO.setAverage_score(rs.getDouble(13));
+			movieDTO.setSum_score(rs.getInt(14));
+			
+			vector.add(movieDTO);
+		}
+		
 		pstmt = con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		
-		return rs;
+		pstmt.close();
+		con.close();
+		rs.close();
+		
+		return vector;
 	}
 	
 	//제목으로 영화 조회
-	public static ResultSet readMovieByTitle(String title) throws SQLException {
+	public static Vector readMovieByTitle(String title) throws SQLException {
 		try {
 			Class.forName(DBConfig.driver);
 			con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
@@ -109,11 +136,38 @@ public class MovieDAO {
 		
 		String sql = "SELECT title, title_origin, thumbnail_image, release_date, summary, type, director, genre, rating, cast, preview_url, review_count, average_score, sum_score FROM movie WHERE title LIKE %?%";
 		
+		Vector<MovieDTO> vector = new Vector<>();
+		
+		MovieDTO movieDTO = null;
+		
+		while (rs.next()) {
+			movieDTO.setTitle(rs.getString(1));
+			movieDTO.setTitle_origin(rs.getString(2));
+			movieDTO.setThumbnail_image(rs.getString(3));
+			movieDTO.setRelease_date(rs.getDate(4));
+			movieDTO.setSummary(rs.getString(5));
+			movieDTO.setType(rs.getString(6));
+			movieDTO.setDirector(rs.getString(7));
+			movieDTO.setGenre(rs.getString(8));
+			movieDTO.setRating(rs.getInt(9));
+			movieDTO.setCast(rs.getString(10));
+			movieDTO.setPreview_url(rs.getString(11));
+			movieDTO.setReview_count(rs.getInt(12));
+			movieDTO.setAverage_score(rs.getDouble(13));
+			movieDTO.setSum_score(rs.getInt(14));
+			
+			vector.add(movieDTO);
+		}
+		
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, title);
 		rs = pstmt.executeQuery();
 		
-		return rs;
+		pstmt.close();
+		con.close();
+		rs.close();
+		
+		return vector;
 	}
 	
 	//영화 정보 수정하는 update 메소드
