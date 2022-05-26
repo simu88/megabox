@@ -36,7 +36,8 @@ public class MovieDAO {
 		
 		//DAO 공통 코드
 		
-		String sql = "INSERT INTO movie VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO movie(title, title_origin, thumbnail_image, release_date, summary, type, director,"
+				+ " genre, rating, cast, preview_url, review_count, average_score, sum_score VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		
 		try {
 			pstmt = con.prepareStatement(sql);

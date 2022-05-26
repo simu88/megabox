@@ -1,21 +1,25 @@
 package model;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
+
+import com.sun.jmx.snmp.Timestamp;
 
 public class ReserveDTO {
 
 	int customer_id;
 	int schedule_id;
-	Date date;
+	LocalDate date;
 	String creditcard;
 	String payment_type;
 	LocalDateTime reserve_time;
 	int customer_count;
 	int price_sum;
 
-	public ReserveDTO(int customer_id, int schedule_id, Date date, String creditcard, String payment_type,
+	
+	public ReserveDTO(int customer_id, int schedule_id, LocalDate date, String creditcard, String payment_type,
 			LocalDateTime reserve_time, int customer_count, int price_sum) 
 	{
 		this.customer_id=customer_id;
@@ -45,11 +49,11 @@ public class ReserveDTO {
 		this.schedule_id=schedule_id;
 	}
 	
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date=date;
 	}
 	
