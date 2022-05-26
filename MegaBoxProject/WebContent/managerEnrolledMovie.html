@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>관리자 등록한 영화 정보</title>
+<style>
+#left {
+    width:200px; 
+    height:300px;
+    float:left;
+    margin-left:300px;
+}
+#middle {
+    width:500px; 
+    height:250px;
+    float:left;
+}
+#td,tr{
+	width:20px;
+	height:40px;
+	text-align:center
+}
+</style>
+<link href="all.css" rel="stylesheet" type="text/css"> 
+</head>
+<body>
+	<iframe class="menu" src=beforeMenu.html name=home scrolling=no style="width:100%; height:165px; border:none; text-align:center;"></iframe>
+	<div style="display:flex">
+		<div id="left">	
+		<input type=button value="등록한 영화" style="width: 100px;height: 40px;" onclick="location.href='managerEnrolledMovie.html'">
+		<input type=button value="신규 등록" style="width: 100px;height: 40px;" onclick="location.href='managerEnrollNewMovie_1.html'">
+		<input type=button value="예매 현황" style="width: 100px;height: 40px;" onclick="location.href='managerTicketingConfirm.html'">
+		</div>
+		<div style="width:100px; height:300px;"></div>
+		<div id="middle">
+		<table border=0>
+		<tr>
+		
+       	<td>
+       		<p>영화목록</p>
+       	</td>
+        <td>
+       		<p>시간</p>
+       	</td>
+       	<td>
+       		<p>상영관</p>
+       	</td>
+      </tr>
+     	<tr>
+       	<td>
+       		<form>
+       		<select name="movie">
+       		<option value="first" selected>닥터스트레인지 대혼돈의 멀티버스</option>
+       		<option value="second">세븐틴파워 오브 러브 더 무비</option>
+       		<option value="third">신비한 동물들과 덤블도어의 비밀</option>
+  		    <option value="forth">니부모 얼굴이 보고싶다</option>
+       		</select>
+       		</form>
+       	</td>
+        <td>
+       		<form>
+       		<select name="time">
+       		<option value="first" selected>2022.04.26 16:01~18:15</option>
+       		<option value="second">2022.04.26 18:20~20:34</option>
+       		<option value="third">2022.04.26 20:39~22:53</option>
+  		    <option value="forth">2022.04.26 22:58~01:12</option>
+       		</select>
+       		</form>
+       	</td>
+       	<td>
+       		<form>
+       		<select name="time">
+       		<option value="first" selected>1관</option>
+       		<option value="second">2관</option>
+       		<option value="third">3관</option>
+  		    <option value="forth">4관</option>
+       		</select>
+       		</form>
+       	</td>
+      </tr>
+      <tr>
+       	<td>
+       		<form>
+       		<select name="movie">
+       		<option value="first">닥터스트레인지 대혼돈의 멀티버스</option>
+       		<option value="second" selected>세븐틴파워 오브 러브 더 무비</option>
+       		<option value="third">신비한 동물들과 덤블도어의 비밀</option>
+  		    <option value="forth">니부모 얼굴이 보고싶다</option>
+       		</select>
+       		</form>
+       	</td>
+        <td>
+       		<form>
+       		<select name="time">
+       		<option value="first">2022.04.26 16:01~18:15</option>
+       		<option value="second" selected>2022.04.26 18:20~20:34</option>
+       		<option value="third">2022.04.26 20:39~22:53</option>
+  		    <option value="forth">2022.04.26 22:58~01:12</option>
+       		</select>
+       		</form>
+       	</td>
+       	<td>
+       		<form>
+       		<select name="time">
+       		<option value="first">1관</option>
+       		<option value="second" selected>2관</option>
+       		<option value="third">3관</option>
+  		    <option value="forth">4관</option>
+       		</select>
+       		</form>
+       	</td>
+      </tr>
+      <tr>
+       	<td>
+       		<form>
+       		<select name="movie">
+       		<option value="first">닥터스트레인지 대혼돈의 멀티버스</option>
+       		<option value="second">세븐틴파워 오브 러브 더 무비</option>
+       		<option value="third" selected>신비한 동물들과 덤블도어의 비밀</option>
+  		    <option value="forth">니부모 얼굴이 보고싶다</option>
+       		</select>
+       		</form>
+       	</td>
+        <td>
+       		<form>
+       		<select name="time">
+       		<option value="first">2022.04.26 16:01~18:15</option>
+       		<option value="second">2022.04.26 18:20~20:34</option>
+       		<option value="third" selected>2022.04.26 20:39~22:53</option>
+  		    <option value="forth">2022.04.26 22:58~01:12</option>
+       		</select>
+       		</form>
+       	</td>
+       	<td>
+       		<form>
+       		<select name="time">
+       		<option value="first">1관</option>
+       		<option value="second">2관</option>
+       		<option value="third" selected>3관</option>
+  		    <option value="forth">4관</option>
+       		</select>
+       		</form>
+       	</td>
+      </tr>
+      <tr>
+       	<td>
+       		<form>
+       		<select name="movie">
+       		<option value="first">닥터스트레인지 대혼돈의 멀티버스</option>
+       		<option value="second">세븐틴파워 오브 러브 더 무비</option>
+       		<option value="third">신비한 동물들과 덤블도어의 비밀</option>
+  		    <option value="forth" selected>니부모 얼굴이 보고싶다</option>
+       		</select>
+       		</form>
+       	</td>
+        <td>
+       		<form>
+       		<select name="time">
+       		<option value="first">2022.04.26 16:01~18:15</option>
+       		<option value="second">2022.04.26 18:20~20:34</option>
+       		<option value="third">2022.04.26 20:39~22:53</option>
+  		    <option value="forth" selected>2022.04.26 22:58~01:12</option>
+       		</select>
+       		</form>
+       	</td>
+       	<td>
+       		<form>
+       		<select name="time">
+       		<option value="first">1관</option>
+       		<option value="second">2관</option>
+       		<option value="third">3관</option>
+  		    <option value="forth" selected>4관</option>
+       		</select>
+       		</form>
+       	</td>
+      </tr>
+      </table>
+	  <div style="width:400px; height:200px; margin-left:50%; margin-top:20%;">
+	  <input type=submit value="저장" style="width: 100px;height: 40px;">
+	  <input type=reset value="취소" style="width: 100px;height: 40px;">
+	  </div>
+	</div>	
+	</div>
+</body>
+</html>
