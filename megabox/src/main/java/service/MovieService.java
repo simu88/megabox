@@ -74,4 +74,9 @@ public class MovieService {
 		
 		MovieDAO.updateMovie(movieDTO);
 	}
+	
+	//영화 정보 삭제
+	public static void deleteMovie(int movie_id) throws SQLException {
+		MovieDAO.deleteMovieByID(movie_id);
+	}
 }
