@@ -4,6 +4,7 @@ import java.util.*;
 
 public class MovieDTO {
 
+	int movie_id;
 	String title;
 	String title_origin;
 	String thumbnail_image;
@@ -37,6 +38,10 @@ public class MovieDTO {
 		this.review_count=review_count;
 		this.average_score=average_score;
 		this.sum_score=sum_score;
+	}
+	
+	public int getMovie_id() {
+		return movie_id;
 	}
 	
 	public String getTitle() {
@@ -77,6 +82,11 @@ public class MovieDTO {
 	public String getType() {
 		return type;
 	}
+	
+	public void setMovie_id(int movie_id) {
+		this.movie_id = movie_id;
+	}
+	
 	public void setType(String type) {
 		this.type=type;
 	}
