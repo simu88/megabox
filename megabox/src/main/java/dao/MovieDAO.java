@@ -289,8 +289,55 @@ public class MovieDAO {
 		pstmt.setInt(1, movie_id);
 		pstmt.executeQuery();
 		
+
+
+		con.close();
+	}
+	
+	//영화 리뷰 개수, 평균 평점, 평점 합 갱신
+	public static void renewMovieReview(int movie_id, int score) throws SQLException {
+		try {
+			Class.forName(DBConfig.driver);
+			con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch(SQLException e){
+            System.out.println("에러: " + e);
+        }
+		
+		String sql = "SELECT review_count, average_score, sum_score FROM movie WHERE movie_id=?";
+		
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, movie_id);
+		rs = pstmt.executeQuery();
+		
+		int review_count = 0, sum_score = 0;
+		double average_score = 0;
+		
+		while (rs.next()) {
+			review_count = rs.getInt(1);
+			average_score = rs.getDouble(2);
+			sum_score = rs.getInt(3);
+		}
+		
+		rs.close();
+		pstmt.close();
+		
+		review_count += 1;
+		sum_score += score;
+		average_score = sum_score / review_count;
+		
+		sql = "UPDATE movie SET review_count=?, average_score=?, sum_score=? WHERE movie_id=?";
+		pstmt.setInt(1, review_count);
+		pstmt.setDouble(2, average_score);
+		pstmt.setInt(3, sum_score);
+		pstmt.setInt(4, movie_id);
+		
 		pstmt.executeUpdate();
 		pstmt.close();
 		con.close();
 	}
 }
+
+
