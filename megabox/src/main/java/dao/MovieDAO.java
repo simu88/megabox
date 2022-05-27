@@ -270,4 +270,27 @@ public class MovieDAO {
 		con.close();
 		
 	}
+	
+	//movie_id 입력받아 영화 데이터 삭제
+	public static void deleteMovieByID(int movie_id) throws SQLException {
+		try {
+			Class.forName(DBConfig.driver);
+			con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch(SQLException e){
+            System.out.println("에러: " + e);
+        }
+		
+		String sql = "DELETE FROM movie WHERE movie_id=?";
+		
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, movie_id);
+		pstmt.executeQuery();
+		
+		pstmt.executeUpdate();
+		pstmt.close();
+		con.close();
+	}
 }
