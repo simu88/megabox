@@ -2,6 +2,7 @@ package model;
 
 public class ReviewDTO {
 
+	int review_id;
 	int customer_id;
 	int movie_id;
 	int score;
@@ -35,5 +36,13 @@ public class ReviewDTO {
 
 	public void setScore(int score) {
 		this.score=score;
+	}
+	
+	public int getReview_id() {
+		return review_id;
+	}
+	
+	public void setReview_id(int id) {
+		this.review_id = id;
 	}
 }
