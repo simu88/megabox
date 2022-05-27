@@ -6,16 +6,17 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Vector;
 
 import common.DBConfig;
 import model.ReserveDTO;
 
 public class ReserveDAO {
-
+	static Connection con = null;
+	static PreparedStatement pstmt = null;
 	
 	public static void createReserve(ReserveDTO reserveDTO) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
+
 		
 		try {
 			Class.forName(DBConfig.driver);
@@ -51,9 +52,7 @@ public class ReserveDAO {
 		
 		
 		
-		
-		
-		
-		
 	}
+	
+
 }
