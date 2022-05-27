@@ -93,6 +93,9 @@ public class MovieDAO {
 		
 		MovieDTO movieDTO = null;
 		
+		pstmt = con.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		
 		while (rs.next()) {
 			movieDTO.setTitle(rs.getString(1));
 			movieDTO.setTitle_origin(rs.getString(2));
@@ -111,10 +114,7 @@ public class MovieDAO {
 			
 			vector.add(movieDTO);
 		}
-		
-		pstmt = con.prepareStatement(sql);
-		rs = pstmt.executeQuery();
-		
+				
 		pstmt.close();
 		con.close();
 		rs.close();
@@ -140,6 +140,10 @@ public class MovieDAO {
 		
 		MovieDTO movieDTO = null;
 		
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, title);
+		rs = pstmt.executeQuery();
+		
 		while (rs.next()) {
 			movieDTO.setTitle(rs.getString(1));
 			movieDTO.setTitle_origin(rs.getString(2));
@@ -159,15 +163,63 @@ public class MovieDAO {
 			vector.add(movieDTO);
 		}
 		
+		pstmt.close();
+		con.close();
+		rs.close();
+		
+		return vector;
+	}
+	
+	//특정 영화 개수 가져오기
+	public static Vector readMovieBylimit(int start, int limit) throws SQLException {
+		//start 행부터 limit개를 가져옴. 처음부터 가져올 경우 start는 0
+		try {
+			Class.forName(DBConfig.driver);
+			con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch(SQLException e){
+            System.out.println("에러: " + e);
+        }
+		
+		
+		String sql = "SELECT title, title_origin, thumbnail_image, release_date, summary, type, director, genre, rating, cast, preview_url, review_count, average_score, sum_score FROM movie LIMIT ?, ?";
+	
+		Vector<MovieDTO> vector = new Vector<>();
+		
+		MovieDTO movieDTO = null;
+		
 		pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, title);
+		pstmt.setInt(1, start);
+		pstmt.setInt(2, limit);
 		rs = pstmt.executeQuery();
+		
+		while (rs.next()) {
+			movieDTO.setTitle(rs.getString(1));
+			movieDTO.setTitle_origin(rs.getString(2));
+			movieDTO.setThumbnail_image(rs.getString(3));
+			movieDTO.setRelease_date(rs.getDate(4));
+			movieDTO.setSummary(rs.getString(5));
+			movieDTO.setType(rs.getString(6));
+			movieDTO.setDirector(rs.getString(7));
+			movieDTO.setGenre(rs.getString(8));
+			movieDTO.setRating(rs.getInt(9));
+			movieDTO.setCast(rs.getString(10));
+			movieDTO.setPreview_url(rs.getString(11));
+			movieDTO.setReview_count(rs.getInt(12));
+			movieDTO.setAverage_score(rs.getDouble(13));
+			movieDTO.setSum_score(rs.getInt(14));
+			
+			vector.add(movieDTO);
+		}
 		
 		pstmt.close();
 		con.close();
 		rs.close();
 		
 		return vector;
+	
 	}
 	
 	//영화 정보 수정하는 update 메소드
