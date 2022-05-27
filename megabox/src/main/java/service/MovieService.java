@@ -42,6 +42,14 @@ public class MovieService {
 		return vc;
 	}
 	
+	//특정 영화 개수 내림차순으로 가져오기
+	public static Vector viewMovieLimit(int start, int end) throws SQLException {
+		//start 행부터 limit개를 가져옴. 처음부터 가져올 경우 start는 0
+		Vector vc = MovieDAO.readMovieBylimit(start, end);
+		
+		return vc;
+	}
+	
 	//영화 정보 수정
 	public static void modifyMovie(
 			String title,
