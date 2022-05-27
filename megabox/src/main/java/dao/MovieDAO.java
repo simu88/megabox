@@ -75,7 +75,7 @@ public class MovieDAO {
 		
 	}
 	
-	//영화 정보 전체 조회
+	//영화 정보 전체 내림차순 조회
 	public static Vector readAllMovies() throws SQLException {
 		try {
 			Class.forName(DBConfig.driver);
@@ -87,7 +87,7 @@ public class MovieDAO {
             System.out.println("에러: " + e);
         }
 		
-		String sql = "SELECT title, title_origin, thumbnail_image, release_date, summary, type, director, genre, rating, cast, preview_url, review_count, average_score, sum_score FROM movie";
+		String sql = "SELECT movie_id, title, title_origin, thumbnail_image, release_date, summary, type, director, genre, rating, cast, preview_url, review_count, average_score, sum_score FROM movie order by movie_id desc";
 		
 		Vector<MovieDTO> vector = new Vector<>();
 		
@@ -97,20 +97,21 @@ public class MovieDAO {
 		rs = pstmt.executeQuery();
 		
 		while (rs.next()) {
-			movieDTO.setTitle(rs.getString(1));
-			movieDTO.setTitle_origin(rs.getString(2));
-			movieDTO.setThumbnail_image(rs.getString(3));
-			movieDTO.setRelease_date(rs.getDate(4));
-			movieDTO.setSummary(rs.getString(5));
-			movieDTO.setType(rs.getString(6));
-			movieDTO.setDirector(rs.getString(7));
-			movieDTO.setGenre(rs.getString(8));
-			movieDTO.setRating(rs.getInt(9));
-			movieDTO.setCast(rs.getString(10));
-			movieDTO.setPreview_url(rs.getString(11));
-			movieDTO.setReview_count(rs.getInt(12));
-			movieDTO.setAverage_score(rs.getDouble(13));
-			movieDTO.setSum_score(rs.getInt(14));
+			movieDTO.setMovie_id(rs.getInt(1));
+			movieDTO.setTitle(rs.getString(2));
+			movieDTO.setTitle_origin(rs.getString(3));
+			movieDTO.setThumbnail_image(rs.getString(4));
+			movieDTO.setRelease_date(rs.getDate(5));
+			movieDTO.setSummary(rs.getString(6));
+			movieDTO.setType(rs.getString(7));
+			movieDTO.setDirector(rs.getString(8));
+			movieDTO.setGenre(rs.getString(9));
+			movieDTO.setRating(rs.getInt(10));
+			movieDTO.setCast(rs.getString(11));
+			movieDTO.setPreview_url(rs.getString(12));
+			movieDTO.setReview_count(rs.getInt(13));
+			movieDTO.setAverage_score(rs.getDouble(14));
+			movieDTO.setSum_score(rs.getInt(15));
 			
 			vector.add(movieDTO);
 		}
@@ -134,7 +135,7 @@ public class MovieDAO {
             System.out.println("에러: " + e);
         }
 		
-		String sql = "SELECT title, title_origin, thumbnail_image, release_date, summary, type, director, genre, rating, cast, preview_url, review_count, average_score, sum_score FROM movie WHERE title LIKE %?%";
+		String sql = "SELECT movie_id, title, title_origin, thumbnail_image, release_date, summary, type, director, genre, rating, cast, preview_url, review_count, average_score, sum_score FROM movie WHERE title LIKE %?%";
 		
 		Vector<MovieDTO> vector = new Vector<>();
 		
@@ -145,20 +146,21 @@ public class MovieDAO {
 		rs = pstmt.executeQuery();
 		
 		while (rs.next()) {
-			movieDTO.setTitle(rs.getString(1));
-			movieDTO.setTitle_origin(rs.getString(2));
-			movieDTO.setThumbnail_image(rs.getString(3));
-			movieDTO.setRelease_date(rs.getDate(4));
-			movieDTO.setSummary(rs.getString(5));
-			movieDTO.setType(rs.getString(6));
-			movieDTO.setDirector(rs.getString(7));
-			movieDTO.setGenre(rs.getString(8));
-			movieDTO.setRating(rs.getInt(9));
-			movieDTO.setCast(rs.getString(10));
-			movieDTO.setPreview_url(rs.getString(11));
-			movieDTO.setReview_count(rs.getInt(12));
-			movieDTO.setAverage_score(rs.getDouble(13));
-			movieDTO.setSum_score(rs.getInt(14));
+			movieDTO.setMovie_id(rs.getInt(1));
+			movieDTO.setTitle(rs.getString(2));
+			movieDTO.setTitle_origin(rs.getString(3));
+			movieDTO.setThumbnail_image(rs.getString(4));
+			movieDTO.setRelease_date(rs.getDate(5));
+			movieDTO.setSummary(rs.getString(6));
+			movieDTO.setType(rs.getString(7));
+			movieDTO.setDirector(rs.getString(8));
+			movieDTO.setGenre(rs.getString(9));
+			movieDTO.setRating(rs.getInt(10));
+			movieDTO.setCast(rs.getString(11));
+			movieDTO.setPreview_url(rs.getString(12));
+			movieDTO.setReview_count(rs.getInt(13));
+			movieDTO.setAverage_score(rs.getDouble(14));
+			movieDTO.setSum_score(rs.getInt(15));
 			
 			vector.add(movieDTO);
 		}
@@ -170,7 +172,7 @@ public class MovieDAO {
 		return vector;
 	}
 	
-	//특정 영화 개수 가져오기
+	//특정 영화 개수 내림차순으로 가져오기
 	public static Vector readMovieBylimit(int start, int limit) throws SQLException {
 		//start 행부터 limit개를 가져옴. 처음부터 가져올 경우 start는 0
 		try {
@@ -184,7 +186,7 @@ public class MovieDAO {
         }
 		
 		
-		String sql = "SELECT title, title_origin, thumbnail_image, release_date, summary, type, director, genre, rating, cast, preview_url, review_count, average_score, sum_score FROM movie LIMIT ?, ?";
+		String sql = "SELECT movie_id, title, title_origin, thumbnail_image, release_date, summary, type, director, genre, rating, cast, preview_url, review_count, average_score, sum_score FROM movie order by movie_id desc LIMIT ?, ?";
 	
 		Vector<MovieDTO> vector = new Vector<>();
 		
@@ -196,20 +198,21 @@ public class MovieDAO {
 		rs = pstmt.executeQuery();
 		
 		while (rs.next()) {
-			movieDTO.setTitle(rs.getString(1));
-			movieDTO.setTitle_origin(rs.getString(2));
-			movieDTO.setThumbnail_image(rs.getString(3));
-			movieDTO.setRelease_date(rs.getDate(4));
-			movieDTO.setSummary(rs.getString(5));
-			movieDTO.setType(rs.getString(6));
-			movieDTO.setDirector(rs.getString(7));
-			movieDTO.setGenre(rs.getString(8));
-			movieDTO.setRating(rs.getInt(9));
-			movieDTO.setCast(rs.getString(10));
-			movieDTO.setPreview_url(rs.getString(11));
-			movieDTO.setReview_count(rs.getInt(12));
-			movieDTO.setAverage_score(rs.getDouble(13));
-			movieDTO.setSum_score(rs.getInt(14));
+			movieDTO.setMovie_id(rs.getInt(1));
+			movieDTO.setTitle(rs.getString(2));
+			movieDTO.setTitle_origin(rs.getString(3));
+			movieDTO.setThumbnail_image(rs.getString(4));
+			movieDTO.setRelease_date(rs.getDate(5));
+			movieDTO.setSummary(rs.getString(6));
+			movieDTO.setType(rs.getString(7));
+			movieDTO.setDirector(rs.getString(8));
+			movieDTO.setGenre(rs.getString(9));
+			movieDTO.setRating(rs.getInt(10));
+			movieDTO.setCast(rs.getString(11));
+			movieDTO.setPreview_url(rs.getString(12));
+			movieDTO.setReview_count(rs.getInt(13));
+			movieDTO.setAverage_score(rs.getDouble(14));
+			movieDTO.setSum_score(rs.getInt(15));
 			
 			vector.add(movieDTO);
 		}
