@@ -79,4 +79,5 @@ public class MovieService {
 	public static void deleteMovie(int movie_id) throws SQLException {
 		MovieDAO.deleteMovieByID(movie_id);
 	}
+	
 }
