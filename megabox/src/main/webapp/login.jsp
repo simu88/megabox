@@ -15,7 +15,11 @@
 	int role = customerDTO.getRole();
 	
 	if (role == 4) {
-		//로그인 실패
+		%>
+		<script>alert('아이디 혹은 비밀번호가 맞지 않습니다.');
+		window.history.back();
+		</script>
+	<% 
 	}
 	else {
 		//로그인 성공
@@ -25,8 +29,9 @@
 		session.setAttribute("role", role);
 		//세션에 권한 추가
 		session.setAttribute("id", id);
+		
+		response.sendRedirect("main.html");
 	}
-
 %>
 <!DOCTYPE html>
 <html>
