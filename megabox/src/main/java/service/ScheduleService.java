@@ -1,5 +1,6 @@
 package service;
 
+import java.sql.SQLException;
 import java.time.LocalTime;
 import java.util.Date;
 
@@ -24,5 +25,12 @@ public class ScheduleService {
 				rest_seat_count);
 		
 		ScheduleDAO.createSchedule(scheduleDTO);
+	}
+	
+	//상영시간표 삭제
+	public static void deleteSchedule(ScheduleDTO s) throws SQLException {
+		
+		ScheduleDAO.deleteSchedule(s.getSchedule_id());
+		
 	}
 }
