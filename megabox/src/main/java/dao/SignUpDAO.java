@@ -11,11 +11,12 @@ public class SignUpDAO {
 	
 	public static void register(String id, String password, String email, String phone, int role, int review_count) throws SQLException {
 		
-		
-		
+		//System.out.println(id + email + password + phone);
+			
 		try {
 			Class.forName(DBConfig.driver);
 			con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
+			//System.out.println("Á¢¼ÓµÊ");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

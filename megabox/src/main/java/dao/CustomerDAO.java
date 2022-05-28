@@ -95,7 +95,8 @@ public class CustomerDAO {
 	
 	//회원가입 시 아이디 중복 체크를 위한 로직
 	public static Vector checkID(String id) throws SQLException {
-				
+		//Class.forName(DBConfig.driver);
+		//con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
 			try {
 				Class.forName(DBConfig.driver);
 				con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
