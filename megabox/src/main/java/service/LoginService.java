@@ -14,11 +14,21 @@ public class LoginService {
 		
 		CustomerDTO customerDTO = new CustomerDTO(id, PasswordEncryptService.passwordEncrypt(password), "", "", 0, 0);
 		
-		Vector vc = CustomerDAO.login(customerDTO);
+		Vector<CustomerDTO> vc = CustomerDAO.login(customerDTO);
+			
+		System.out.println(vc.size());
+		
+		CustomerDTO customerDTOTemp = null;
 		
 		for (int i = 0; i < 1; i++) {
 			
-			CustomerDTO customerDTOTemp = (CustomerDTO) vc.get(i);
+			customerDTOTemp = vc.get(i);
+			
+			if (customerDTOTemp.getRole() == 4) {
+				customerDTO.setID(id);
+				customerDTO.setRole(4);
+				continue;
+			}
 			
 //			System.out.println("customerDTO.getID() : " + id);
 //			System.out.println("customerDTOTemp.getID() : " + customerDTOTemp.getID());
@@ -34,6 +44,7 @@ public class LoginService {
 				vc.add(customerDTOTemp);
 			}
 			else {
+				customerDTO.setID(id);
 				customerDTO.setRole(4);
 			}
 			//권한이 4면 로그인 실패! 끄앙 주금

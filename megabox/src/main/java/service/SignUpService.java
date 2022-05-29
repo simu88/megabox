@@ -22,7 +22,7 @@ public class SignUpService {
 			return false;
 		else {
 			try {
-				SignUpDAO.register(customerDTO.getID(), customerDTO.getPassword(), customerDTO.getEmail(), customerDTO.getEmail(), customerDTO.getRole(), customerDTO.getReview_count());
+				SignUpDAO.register(customerDTO.getID(), customerDTO.getPassword(), customerDTO.getEmail(), customerDTO.getPhone(), customerDTO.getRole(), customerDTO.getReview_count());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
