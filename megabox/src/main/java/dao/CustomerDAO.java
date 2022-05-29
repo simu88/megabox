@@ -181,7 +181,12 @@ public class CustomerDAO {
 		
 		CustomerDTO customerDTO2 = new CustomerDTO("", "", "", "", 0, 0);
 		
-		while (rs.next()) {
+//		if (rs.next() == false) {
+//			customerDTO2.setID(customerDTO.getID());
+//			customerDTO2.setRole(4);
+//		}
+		
+		while (rs.next()) {	
 			customerDTO2.setID(rs.getString(1));
 			customerDTO2.setPassword(rs.getString(2));
 			customerDTO2.setRole(rs.getInt(3));
