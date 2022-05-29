@@ -3,7 +3,14 @@
     import="service.LoginService"
     import="model.CustomerDTO"
     %>
-    
+    <% 
+    if (session != null || request.isRequestedSessionIdValid()) {
+    	%>
+    	<script>alert('이미 로그인한 이용자입니다.');
+    	window.history.back();
+    	</script>
+    	<%
+    %>
 <%
 	//로그인 JSP 예제
 	String id = request.getParameter("id");
