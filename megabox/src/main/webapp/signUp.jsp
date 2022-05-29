@@ -39,7 +39,7 @@ if (a == true) {
 	<% 
 	response.sendRedirect("main.html");
 }
-else {
+if (a == false) {
 	%>
 	<script>alert('아이디가 중복됩니다.');
 	window.history.back();

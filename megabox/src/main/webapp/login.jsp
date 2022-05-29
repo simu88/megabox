@@ -11,6 +11,7 @@
     	</script>
     	<%
     %>
+    
 <%
 	//로그인 JSP 예제
 	String id = request.getParameter("id");
@@ -22,11 +23,7 @@
 	int role = customerDTO.getRole();
 	
 	if (role == 4) {
-		%>
-		<script>alert('아이디 혹은 비밀번호가 맞지 않습니다.');
-		window.history.back();
-		</script>
-	<% 
+		
 	}
 	else {
 		//로그인 성공
@@ -37,14 +34,10 @@
 		//세션에 권한 추가
 		session.setAttribute("id", id);
 		
+			response.sendRedirect("main.html");
 		%>
-		<script>alert('로그인 되었습니다.');
-		</script>
-	<% 
 		
-		response.sendRedirect("main.html");
-	}
-%>
+	
 <!DOCTYPE html>
 <html>
 <head>
