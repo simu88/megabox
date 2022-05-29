@@ -9,6 +9,10 @@
 <%
 String id = (String) session.getAttribute("id");
 int role = (Integer) session.getAttribute("role");
+if (session == null || !request.isRequestedSessionIdValid()) {
+	id = "비로그인";
+}
+
 %>
 <!DOCTYPE html>
 <html>

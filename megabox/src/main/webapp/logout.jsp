@@ -7,6 +7,11 @@
 	//세션 초기화
 	session.invalidate();
 %>
+	<script>alert('로그아웃 되었습니다.');
+	window.history.back();
+</script>
+<% 
+%>
 <!DOCTYPE html>
 <html>
 <head>

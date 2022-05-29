@@ -30,6 +30,11 @@
 		//세션에 권한 추가
 		session.setAttribute("id", id);
 		
+		%>
+		<script>alert('로그인 되었습니다.');
+		</script>
+	<% 
+		
 		response.sendRedirect("main.html");
 	}
 %>

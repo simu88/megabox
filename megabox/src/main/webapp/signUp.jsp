@@ -7,6 +7,14 @@
     %>
     
 <% 
+if (session == null || !request.isRequestedSessionIdValid()) {
+	%>
+	<script>alert('잘못된 접근입니다.');
+	window.history.back();
+	</script>
+	<%
+}
+
 
 String id = request.getParameter("ID");
 String pw = request.getParameter("PW");
