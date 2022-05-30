@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <% 
-    if (session.getAttribute("role") != "0") {
-    	%>
-    	<script>alert('잘못된 접근입니다.');
-    	location.href="main.html";
-    	</script>
-    	<%
+    response.setCharacterEncoding("UTF-8");
+    if ((Integer) session.getAttribute("role") != 0) {
+    	out.println(session.getAttribute("role"));
+    	response.sendRedirect("403.html");
     }
     %>
     

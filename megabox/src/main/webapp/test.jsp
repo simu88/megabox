@@ -21,6 +21,6 @@ if (session == null || !request.isRequestedSessionIdValid()) {
 <title>Insert title here</title>
 </head>
 <body>
-환영합니다. <%=id%>님
+환영합니다. <%=id + role%>님
 </body>
 </html>

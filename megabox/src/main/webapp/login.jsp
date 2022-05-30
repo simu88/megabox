@@ -30,8 +30,7 @@
     	</script>
     	<%
   	}
-  	
-  	if (role == 0 || role == 1) {
+  	else {
   		//로그인 성공
   		id = customerDTO.getID();
   		
