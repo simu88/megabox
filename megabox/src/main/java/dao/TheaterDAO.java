@@ -18,7 +18,7 @@ public class TheaterDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch(SQLException e){
-            System.out.println("¿¡·¯: " + e);
+            System.out.println("에러: " + e);
         }
 		
 		String sql="insert into theater(region) values(?);";
@@ -53,17 +53,23 @@ public class TheaterDAO {
 		
 		Vector<TheaterDTO> vector = new Vector<>();
 		
-		TheaterDTO theaterDTO = null;
+		
 		
 		pstmt = con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		
 		while (rs.next()) {
+			TheaterDTO theaterDTO = new TheaterDTO("");
+			//System.out.println(rs.getInt(1));
+			//System.out.println(rs.getString(2));
 			theaterDTO.setTheater_id(rs.getInt(1));
 			theaterDTO.setRegion(rs.getString(2));
 			
 			vector.add(theaterDTO);
+			System.out.println("la: "+ theaterDTO.getTheater_id());
+			System.out.println(theaterDTO.getRegion());
 		}
+		
 		
 		rs.close();
 		pstmt.close();
