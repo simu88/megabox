@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
     import="model.*"
     import="service.*"
     import="dao.*"
@@ -10,17 +10,21 @@
 String id = (String) session.getAttribute("id");
 int role = (Integer) session.getAttribute("role");
 if (session == null || !request.isRequestedSessionIdValid()) {
-	id = "ºñ·Î±×ÀÎ";
+	id = "ë¹„ë¡œê·¸ì¸";
 }
+String name = "ë‚˜ë‚˜ë‚˜";
+String theater = request.getParameter("theater");
+
+out.println(theater);
 
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-È¯¿µÇÕ´Ï´Ù. <%=id + role%>´Ô
+í™˜ì˜í•©ë‹ˆë‹¤. <%=name%>ë‹˜
 </body>
 </html>

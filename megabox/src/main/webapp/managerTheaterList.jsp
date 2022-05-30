@@ -7,6 +7,8 @@
     
     <%
     	Vector<TheaterDTO> vc = TheaterService.viewAllTheater();
+    	out.println(vc.size());
+   
     %>
 <!DOCTYPE html>
 <html>
@@ -15,6 +17,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<br>
 	<table border="1">
 		<tr>
 			<th>영화관 번호</th>
@@ -23,9 +26,11 @@
 			<th></th>
 		</tr>
 		<%
-		TheaterDTO t = null;
+		TheaterDTO t = new TheaterDTO("");
 			for (int i = 0; i < vc.size(); i++) {
-				t = vc.get(1);
+				t = vc.get(i);
+				out.println(i);
+				out.println(t.getTheater_id());
 		%>
 		<tr>
 			<td><%=t.getTheater_id() %></td>

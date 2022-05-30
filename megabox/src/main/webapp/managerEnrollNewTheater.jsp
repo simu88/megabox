@@ -38,7 +38,7 @@
 </head>
 <body>
 	<iframe class="menu" src=beforeMenu.html name=home scrolling=no style="width:100%; height:165px; border:none; text-align:center;"></iframe>
-	<form action="EnrollNewTheater.jsp" method="post">
+	<form action="test.jsp" method="post" accept-charset="UTF-8">
 	<div style="display:flex">
 		<div id="middle">
 		<table border=0>
