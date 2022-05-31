@@ -4,17 +4,17 @@
     import="java.util.Vector"
     import="model.*"
     %>
-        <% 
+    
+    <% 
     response.setCharacterEncoding("UTF-8");
     if ((Integer) session.getAttribute("role") != 0) {
     	out.println(session.getAttribute("role"));
     	response.sendRedirect("403.html");
     }
-    %>
     
-    <%
-    	Vector<TheaterDTO> vc = TheaterService.viewAllTheater();
-   
+    int theater_id = Integer.parseInt(request.getParameter("theater_id"));
+    
+    Vector<AuditoriumDTO> vc = AuditoriumService.viewAuditoriumByTheater(theater_id);
     %>
 <!DOCTYPE html>
 <html>
@@ -23,22 +23,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<br>
-	<table border="1">
+<table border="1">
 		<tr>
-			<th>영화관 번호</th>
-			<th>영화관 이름</th>
+			<th>상영관 번호</th>
+			<th>상영관 이름</th>
 			<th></th>
 		</tr>
 		<%
-		TheaterDTO t = new TheaterDTO("");
+		AuditoriumDTO t = new AuditoriumDTO(0, "", 0);
 			for (int i = 0; i < vc.size(); i++) {
 				t = vc.get(i);
 		%>
 		<tr>
-			<td><%=t.getTheater_id() %></td>
-			<td><a href="managerAuditoriumList.jsp?theater_id=<%=t.getTheater_id()%>"><%=t.getRegion() %></a></td>
-			<td><a href="managerTheaterDelete.jsp?theater_id=<%=t.getTheater_id()%>">삭제</a></td>
+			<td><%=t.getAuditorium_id() %></td>
+			<td><%=t.getAuditorium_name() %></td>
+			<td><a href="managerAuditoriumDelete.jsp?auditorium_id=<%=t.getAuditorium_id()%>">삭제</a></td>
 		</tr>
 		<%
 			}

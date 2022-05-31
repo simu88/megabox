@@ -15,7 +15,7 @@
     
     String theater = request.getParameter("theater");
     
-    out.println(theater);
+    //out.println(theater);
     
     //System.out.println(theater);
     
