@@ -8,19 +8,21 @@ import model.*;
 public class AuditoriumService {
 	
 	//상영관 추가
-	public static void addAuditorium(int theater_id, String auditorium_name, int seat_number) {
-		
+	public static void addAuditorium(int theater_id, String auditorium_name, int seat_number) throws SQLException {
+			
 		AuditoriumDTO auditoriumDTO = new AuditoriumDTO(theater_id, auditorium_name, seat_number);
+		
+		AuditoriumDAO.createAuditorium(auditoriumDTO);
 	}
 	
 	//영화관번호 입력하면 해당 영화관의 모든 상영관 출력
 	public static Vector viewAuditoriumByTheater(int theater_id) throws SQLException {
-		Vector vc = AuditoriumDAO.readAuditoriumByTheaterID(theater_id);
+		Vector<AuditoriumDTO> vc = AuditoriumDAO.readAuditoriumByTheaterID(theater_id);
 		
 		return vc;
 	}
 	
-	//영화관 삭제
+	//상영관 삭제
 	public static boolean deleteAuditorium(AuditoriumDTO a) throws SQLException {
 		boolean result = AuditoriumDAO.deleteAuditorium(a);
 		
