@@ -66,8 +66,8 @@ public class TheaterDAO {
 			theaterDTO.setRegion(rs.getString(2));
 			
 			vector.add(theaterDTO);
-			System.out.println("la: "+ theaterDTO.getTheater_id());
-			System.out.println(theaterDTO.getRegion());
+			//System.out.println("la: "+ theaterDTO.getTheater_id());
+			//System.out.println(theaterDTO.getRegion());
 		}
 		
 		

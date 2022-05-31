@@ -14,7 +14,7 @@ public class AuditoriumDAO {
 	static PreparedStatement pstmt = null;
 	static ResultSet rs = null;
 	
-	public static void createAuditorium(AuditoriumDTO auditoriumDTO) {
+	public static void createAuditorium(AuditoriumDTO auditoriumDTO) throws SQLException {
 
 		
 		try {
@@ -29,21 +29,17 @@ public class AuditoriumDAO {
 		
 		//DAO °øÅë ÄÚµå
 		
-		String sql="insert into auditorium(theater_id, auditorium_name, seat_number) values(?, ?, ?)";
-		try {
-			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, auditoriumDTO.getTheater_id());
-			pstmt.setString(2, auditoriumDTO.getAuditorium_name());
-			pstmt.setInt(3, auditoriumDTO.getSeat_number());
-			
-			int cnt=pstmt.executeUpdate();
-			pstmt.close();
-			con.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		String sql="INSERT into auditorium(theater_id, auditorium_name, seat_number) values(?, ?, ?)";
 		
+		pstmt=con.prepareStatement(sql);
+		pstmt.setInt(1, auditoriumDTO.getTheater_id());
+		pstmt.setString(2, auditoriumDTO.getAuditorium_name());
+		pstmt.setInt(3, auditoriumDTO.getSeat_number());
+			
+		pstmt.executeUpdate();
+		pstmt.close();
+		con.close();
+
 		
 	}
 	
@@ -63,7 +59,7 @@ public class AuditoriumDAO {
 		
 		Vector<AuditoriumDTO> vector = new Vector<>();
 		
-		AuditoriumDTO auditoriumDTO = null;
+		AuditoriumDTO auditoriumDTO = new AuditoriumDTO(0, "", 0);
 		
 		pstmt = con.prepareStatement(sql);
 		pstmt.setInt(1, theater_id);
