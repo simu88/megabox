@@ -4,6 +4,13 @@
     import="java.util.Vector"
     import="model.*"
     %>
+        <% 
+    response.setCharacterEncoding("UTF-8");
+    if ((Integer) session.getAttribute("role") != 0) {
+    	out.println(session.getAttribute("role"));
+    	response.sendRedirect("403.html");
+    }
+    %>
     
     <%
     	Vector<TheaterDTO> vc = TheaterService.viewAllTheater();
@@ -22,7 +29,6 @@
 			<th>영화관 번호</th>
 			<th>영화관 이름</th>
 			<th></th>
-			<th></th>
 		</tr>
 		<%
 		TheaterDTO t = new TheaterDTO("");
@@ -32,8 +38,7 @@
 		<tr>
 			<td><%=t.getTheater_id() %></td>
 			<td><%=t.getRegion() %></td>
-			<td><a href="">수정</a></td>
-			<td><a href="">수정</a></td>
+			<td><a href="managerTheaterDelete.jsp?theater_id=<%=t.getTheater_id()%>">삭제</a></td>
 		</tr>
 		<%
 			}

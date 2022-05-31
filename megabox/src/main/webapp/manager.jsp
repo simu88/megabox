@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+        <% 
+    response.setCharacterEncoding("UTF-8");
+    if ((Integer) session.getAttribute("role") != 0) {
+    	out.println(session.getAttribute("role"));
+    	response.sendRedirect("403.html");
+    }
+    %>
 <!DOCTYPE html>
 <html>
 <head>
