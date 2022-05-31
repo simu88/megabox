@@ -19,8 +19,14 @@ public class TheaterService {
 	
 	//영화관 전체 조회
 	public static Vector viewAllTheater() throws SQLException {
-		Vector vc = TheaterDAO.readAllTheater();
+		Vector<TheaterDTO> vc = TheaterDAO.readAllTheater();
 		
 		return vc;
 	}
+	
+	public static void deleteTheater(int theater_id) throws SQLException {
+		TheaterDAO.deleteTheater(theater_id);
+	}
 }
+
+
