@@ -173,6 +173,8 @@ public class CustomerDAO {
 		
 		Vector<CustomerDTO> vector = new Vector<>();
 		
+		//System.out.println(customerDTO.getID());
+		
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, customerDTO.getID());
 		
@@ -181,9 +183,11 @@ public class CustomerDAO {
 		
 		CustomerDTO customerDTO2 = new CustomerDTO("", "", "", "", 0, 0);
 		
+		//존재하지 않는 아이디라면
 //		if (rs.next() == false) {
 //			customerDTO2.setID(customerDTO.getID());
 //			customerDTO2.setRole(4);
+//			vector.add(customerDTO2);
 //		}
 		
 		while (rs.next()) {	

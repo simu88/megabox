@@ -77,4 +77,26 @@ public class TheaterDAO {
 		
 		return vector;
 	}
+	
+	//영화관 삭제
+	public static void deleteTheater(int theater_id) throws SQLException {
+		try {
+			Class.forName(DBConfig.driver);
+			con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch(SQLException e){
+            System.out.println("에러: " + e);
+        }
+		
+		String sql = "DELETE FROM theater WHERE theater_id=?";
+		
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, theater_id);
+		pstmt.executeUpdate();
+		
+		pstmt.close();
+		con.close();
+	}
 }
