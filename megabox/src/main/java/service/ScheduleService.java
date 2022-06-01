@@ -1,6 +1,7 @@
 package service;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalTime;
 import java.util.Date;
 
@@ -13,8 +14,8 @@ public class ScheduleService {
 			int movie_id,
 			int auditorium_id,
 			Date date,
-			LocalTime time,
-			LocalTime end_time,
+			Timestamp time,
+			Timestamp end_time,
 			int rest_seat_count
 			) {
 		ScheduleDTO scheduleDTO = new ScheduleDTO(movie_id,

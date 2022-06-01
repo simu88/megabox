@@ -8,6 +8,8 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -15,7 +17,7 @@ import java.util.Vector;
 
 public class Test {
 
-	public static void main(String[] args) throws SQLException, UnsupportedEncodingException, NoSuchAlgorithmException {
+	public static void main(String[] args) throws SQLException, UnsupportedEncodingException, NoSuchAlgorithmException, ParseException {
 		
 //		Vector<TheaterDTO> vc = TheaterService.viewAllTheater();
 //		
@@ -29,9 +31,9 @@ public class Test {
 		
 		//TheaterService.deleteTheater(146);
 		
-		Date releaseDate = StringToDateService.transformDate("2011-09-10");
+		Timestamp t = StringToTimeService.transformTime("12:12:12");
 		
-		System.out.println(releaseDate);
+		System.out.println(t);
 		
 		//TheaterService.addTheater("¼­¿ï");
 		
