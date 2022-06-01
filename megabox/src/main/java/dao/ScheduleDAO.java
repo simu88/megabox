@@ -2,6 +2,7 @@ package dao;
 import common.*;
 import model.*;
 import java.sql.*;
+import service.*;
 public class ScheduleDAO {
 
 	static Connection con=null;
@@ -10,6 +11,7 @@ public class ScheduleDAO {
 	
 	public static void createSchedule(ScheduleDTO scheduleDTO) {
 		
+		Date date = StringToDateService.transformDate(scheduleDTO.getDate() + "");
 		
 		try {
 			Class.forName(DBConfig.driver);
@@ -27,7 +29,7 @@ public class ScheduleDAO {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, scheduleDTO.getMovie_id());
 			pstmt.setInt(2, scheduleDTO.getAuditorium_id());
-			pstmt.setDate(3, Date.valueOf(scheduleDTO.getDate()));
+			pstmt.setDate(3, date);
 			pstmt.setTime(4, Time.valueOf(scheduleDTO.getTime()));
 			pstmt.setTime(5, Time.valueOf(scheduleDTO.getEnd_time()));
 			pstmt.setInt(6, scheduleDTO.getRest_seat_count());
