@@ -7,15 +7,6 @@
     %>
     
 <%
-String id = (String) session.getAttribute("id");
-int role = (Integer) session.getAttribute("role");
-if (session == null || !request.isRequestedSessionIdValid()) {
-	id = "비로그인";
-}
-String name = "나나나";
-String theater = request.getParameter("theater");
-
-out.println(theater);
 
 %>
 <!DOCTYPE html>
@@ -25,6 +16,10 @@ out.println(theater);
 <title>Insert title here</title>
 </head>
 <body>
-환영합니다. <%=name%>님
+<form>
+<% out.println(request.getParameter("title"));
+	out.println(request.getParameter("rating"));%>
+
+</form>
 </body>
 </html>

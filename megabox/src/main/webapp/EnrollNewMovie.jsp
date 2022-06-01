@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
     import="service.*"
     import="java.util.Date"
     import="java.text.SimpleDateFormat"
     import="java.time.LocalDate"
     import="java.time.format.DateTimeFormatter"
+    import="model.*"
     %>
     <%@ page import="com.oreilly.servlet.MultipartRequest" %>
 	<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
@@ -18,31 +19,32 @@
     	response.sendRedirect("403.html");
     }
     
-    //ÆÄÀÏ ¾÷·Îµå
+    //íŒŒì¼ ì—…ë¡œë“œ
     MultipartRequest multi = new MultipartRequest(request, FileConfig.directory, FileConfig.fileSize, "utf-8", new DefaultFileRenamePolicy());
     
-    //ÆÄÀÏ ÀÌ¸§
+    //íŒŒì¼ ì´ë¦„
     Enumeration files = multi.getFileNames();
 	String name = (String)files.nextElement();
 	String filename = multi.getFilesystemName(name);
+	
+	
+    //Stringì„ Dateë¡œ ë³€í™˜
+    Date releaseDate = StringToDateService.transformDate(multi.getParameter("release_date"));
     
-    //StringÀ» Date·Î º¯È¯
-    LocalDate date = LocalDate.parse(request.getParameter("release_date"), DateTimeFormatter.ISO_DATE);
-    
-   MovieService.addNewMovie(request.getParameter("title"), 
-		   request.getParameter("title_origin"), 
+   MovieService.addNewMovie(multi.getParameter("title"), 
+		   multi.getParameter("title_origin"), 
 		   filename, 
-		   java.sql.Date.valueOf(date), 
-		   request.getParameter("summary"), 
-		   request.getParameter("type"), 
-		   request.getParameter("director"), 
-		   request.getParameter("genre"), 
-		   Integer.parseInt(request.getParameter("rating")), 
-		   request.getParameter("cast"), 
-		   request.getParameter("preview_url")
+		   releaseDate, 
+		   multi.getParameter("summary"), 
+		   multi.getParameter("type"), 
+		   multi.getParameter("director"), 
+		   multi.getParameter("genre"), 
+		   (int) Integer.parseInt(multi.getParameter("rating")), 
+		   multi.getParameter("cast"), 
+		   multi.getParameter("preview_url")
 		   );
    %>
-  	<script>alert('¿µÈ­¸¦ Ãß°¡Çß½À´Ï´Ù.');
+  	<script>alert('ì˜í™”ë¥¼ ì¶”ê°€í–ˆìŠµë‹ˆë‹¤.');
   	window.history.back();
   	</script>
   	<%

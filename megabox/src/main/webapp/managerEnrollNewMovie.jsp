@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
     import="service.*"
     import="model.*"
     import="java.util.Vector"
@@ -15,7 +15,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <style>
 #left {
     width:200px; 
@@ -42,9 +42,9 @@
 <form action="EnrollNewMovie.jsp" method="post" enctype="multipart/form-data">
 	<div style="display:flex">
 		<div id="left">	
-		<input type=button value="µÓ∑œ«— øµ»≠" style="width: 100px;height: 40px;" onclick="location.href='managerEnrolledMovie.html'">
-		<input type=button value="Ω≈±‘ µÓ∑œ" style="width: 100px;height: 40px;" onclick="location.href='managerEnrollNewMovie_1.html'">
-		<input type=button value="øπ∏≈ «ˆ»≤" style="width: 100px;height: 40px;" onclick="location.href='managerTicketingConfirm.html'">
+		<input type=button value="Îì±Î°ùÌïú ÏòÅÌôî" style="width: 100px;height: 40px;" onclick="location.href='managerEnrolledMovie.html'">
+		<input type=button value="Ïã†Í∑ú Îì±Î°ù" style="width: 100px;height: 40px;" onclick="location.href='managerEnrollNewMovie.jsp'">
+		<input type=button value="ÏòàÎß§ ÌòÑÌô©" style="width: 100px;height: 40px;" onclick="location.href='managerTicketingConfirm.html'">
 		</div>
 		
 		<div style="float:left "display:inline;">
@@ -54,95 +54,95 @@
 		<table border=0>
 		<tr>
        	<td>
-       		<p>øµ»≠¡¶∏Ò</p>
+       		<p>ÏòÅÌôîÏ†úÎ™©</p>
        	</td>
         <td>
-       		<input type="text" name="title" size="40" placeholder="øµ»≠¡¶∏Ò¿ª ¿‘∑¬«ÿ¡÷ººø‰">
+       		<input type="text" name="title" size="40" placeholder="ÏòÅÌôîÏ†úÎ™©ÏùÑ ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî">
        	</td>
        	</tr>
        	<tr>
        	<td>
-       		<p>øµ»≠¡¶∏Ò</p>
+       		<p>ÏòÅÌôîÏ†úÎ™©</p>
        	</td>
         <td>
-       		<input type="text" name="title_origin" size="40" placeholder="ø¯¡¶∏¶ ¿‘∑¬«ÿ¡÷ººø‰">
+       		<input type="text" name="title_origin" size="40" placeholder="ÏõêÏ†úÎ•º ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî">
        	</td>
        	</tr>
        	<tr>
        	<td>
-       		 <p>ΩÊ≥◊¿œ ¿ÃπÃ¡ˆ</p>
+       		 <p>Ïç∏ÎÑ§Ïùº Ïù¥ÎØ∏ÏßÄ</p>
        	</td>
         <td>
-       		<input type="file" name="thumbnail_image" placeholder="ΩÊ≥◊¿œ ¿ÃπÃ¡ˆ">       		
+       		<input type="file" name="thumbnail_image" placeholder="Ïç∏ÎÑ§Ïùº Ïù¥ÎØ∏ÏßÄ">       		
        	</td>
       	</tr>
       	<tr>
        	<td>
-       		 <p>ªÛøµ¿œΩ√</p>
+       		 <p>ÏÉÅÏòÅÏùºÏãú</p>
        	</td>
         <td>
-       		<input type="date" name="release_date" value="2019-09-22">       		
+       		<input type="date" name="release_date">       	
        	</td>
       	</tr>
       	<tr>
        	<td>
-       		 <p>¡Ÿ∞≈∏Æ</p>
+       		 <p>Ï§ÑÍ±∞Î¶¨</p>
        	</td>
         <td>
-       		<textarea name="summary" placeholder="¡Ÿ∞≈∏Æ"></textarea>       		
+       		<textarea name="summary" placeholder="Ï§ÑÍ±∞Î¶¨"></textarea>       		
        	</td>
       	</tr>
       	<tr>
        	<td>
-       		 <p>¿⁄∏∑ ø©∫Œ</p>
+       		 <p>ÏûêÎßâ Ïó¨Î∂Ä</p>
        	</td>
         <td>
-       		<input type="text" name="type" placeholder="≈∏¿‘">      		
+       		<input type="text" name="type" placeholder="ÌÉÄÏûÖ">      		
        	</td>
       	</tr>
       	<tr>
        	<td>
-       		 <p>∞®µ∂</p>
-       	</td>
+       		 <p>Í∞êÎèÖ</p>
+       	</td>0
         <td>
-       		<input type="text" name="director" placeholder="∞®µ∂">      		
+       		<input type="text" name="director" placeholder="Í∞êÎèÖ">      		
        	</td>
       	</tr>
       	<tr>
        	<td>
-       		 <p>¿Â∏£</p>
+       		 <p>Ïû•Î•¥</p>
        	</td>
         <td>
-       		<input type="text" name="genre" placeholder="¿Â∏£">      		
+       		<input type="text" name="genre" placeholder="Ïû•Î•¥">      		
        	</td>
       	</tr>
       	<tr>
        	<td>
-       		 <p>µÓ±ﬁ</p>
+       		 <p>Îì±Í∏â</p>
        	</td>
         <td>
-       		<input type="text" name="rating" placeholder="µÓ±ﬁ">      		
+       		<input type="text" name="rating" placeholder="Îì±Í∏â">      		
        	</td>
       	</tr>
       	<tr>
        	<td>
-       		 <p>√‚ø¨</p>
+       		 <p>Ï∂úÏó∞</p>
        	</td>
         <td>
-       		<input type="text" name="cast" placeholder="√‚ø¨">      		
+       		<input type="text" name="cast" placeholder="Ï∂úÏó∞">      		
        	</td>
       	</tr>
       	<tr>
        	<td>
-       		 <p>øπ∞Ì∆Ì</p>
+       		 <p>ÏòàÍ≥†Ìé∏</p>
        	</td>
         <td>
-       		<input type="text" name="preview_url" placeholder="øπ∞Ì∆Ì">      		
+       		<input type="text" name="preview_url" placeholder="ÏòàÍ≥†Ìé∏">      		
        	</td>
       	</tr>
         </table>
 	  	<div style="width:400px; height:200px; margin-left:55%; margin-top:35%;">
-	 		<button style="width: 100px;height: 40px;">¥Ÿ¿Ω</button>
+	 		<button type="submit" "width: 100px;height: 40px;">Îã§Ïùå</button>
 	  	</div>
 	  	</form>
 	</div>	
