@@ -43,6 +43,44 @@ public class AuditoriumDAO {
 		
 	}
 	
+	//모든 상영관을 영화관 순서대로 출력
+	public static Vector readAllAuditorium() throws SQLException {
+		try {
+			Class.forName(DBConfig.driver);
+			con = DriverManager.getConnection(DBConfig.URL, DBConfig.dbUserName, DBConfig.dbPassword);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch(SQLException e){
+            System.out.println("에러: " + e);
+        }
+		
+		String sql = "SELECT * FROM auditorium ORDER BY theater_id";
+		
+		Vector<AuditoriumDTO> vector = new Vector<>();
+		
+		AuditoriumDTO auditoriumDTO = new AuditoriumDTO(0, "", 0);
+		
+		pstmt = con.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		
+		while (rs.next()) {
+			auditoriumDTO.setAuditorium_id(rs.getInt(1));
+			auditoriumDTO.setTheater_id(rs.getInt(2));
+			auditoriumDTO.setAuditorium_name(rs.getString(3));
+			auditoriumDTO.setSeat_number(rs.getInt(4));
+			
+			vector.add(auditoriumDTO);
+		}
+		
+		pstmt.close();
+		con.close();
+		rs.close();
+		
+		return vector;
+	
+	}
+	
 	//영화관 번호 입력하면 해당 영화관의 모든 상영관 출력
 	public static Vector readAuditoriumByTheaterID(int theater_id) throws SQLException {
 		try {
