@@ -15,6 +15,13 @@ public class AuditoriumService {
 		AuditoriumDAO.createAuditorium(auditoriumDTO);
 	}
 	
+	//모든 상영관 출력
+	public static Vector viewAllAuditorium() throws SQLException {
+		Vector<AuditoriumDTO> vc = AuditoriumDAO.readAllAuditorium();
+		
+		return vc;
+	}
+	
 	//영화관번호 입력하면 해당 영화관의 모든 상영관 출력
 	public static Vector viewAuditoriumByTheater(int theater_id) throws SQLException {
 		Vector<AuditoriumDTO> vc = AuditoriumDAO.readAuditoriumByTheaterID(theater_id);

@@ -8,6 +8,9 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Vector;
 
 public class Test {
@@ -24,7 +27,11 @@ public class Test {
 //			System.out.println(t.getRegion());
 //		}
 		
-		TheaterService.deleteTheater(146);
+		//TheaterService.deleteTheater(146);
+		
+		Date releaseDate = StringToDateService.transformDate("2011-09-10");
+		
+		System.out.println(releaseDate);
 		
 		//TheaterService.addTheater("¼­¿ï");
 		
