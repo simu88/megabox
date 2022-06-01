@@ -2,17 +2,19 @@ package model;
 
 import java.time.LocalTime;
 import java.util.*;
+import java.sql.Timestamp;
 
 public class ScheduleDTO {
 
+	int schedule_id;
 	int movie_id;
 	int auditorium_id;
 	Date date;
-	LocalTime time;
-	LocalTime end_time;
+	Timestamp time;
+	Timestamp end_time;
 	int rest_seat_count;
 
-	public ScheduleDTO(int movie_id, int auditorium_id, Date date, LocalTime time, LocalTime end_time, int rest_seat_count) {
+	public ScheduleDTO(int movie_id, int auditorium_id, Date date, Timestamp time, Timestamp end_time, int rest_seat_count) {
 
 		this.movie_id=movie_id;
 		this.auditorium_id=auditorium_id;
@@ -21,6 +23,14 @@ public class ScheduleDTO {
 		this.end_time=end_time;
 		this.rest_seat_count=rest_seat_count;
 
+	}
+	
+	public int getSchedule_id() {
+		return schedule_id;
+	}
+	
+	public void setSchedule_id(int id) {
+		this.schedule_id = id;
 	}
 
 	public int getMovie_id() {
@@ -47,19 +57,19 @@ public class ScheduleDTO {
 		this.date=date;
 	}
 	
-	public LocalTime getTime() {
+	public Timestamp getTime() {
 		return time;
 	}
 
-	public void setLocalTime(LocalTime time) {
+	public void setLocalTime(Timestamp time) {
 		this.time=time;
 	}
 	
-	public LocalTime getEnd_time() {
+	public Timestamp getEnd_time() {
 		return end_time;
 	}
 
-	public void setEnd_time(LocalTime end_time) {
+	public void setEnd_time(Timestamp end_time) {
 		this.end_time=end_time;
 	}
 	

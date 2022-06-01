@@ -1,6 +1,7 @@
 package model;
 
 public class AuditoriumDTO {
+	int auditorium_id;
 	int theater_id;
 	String auditorium_name;
 	int seat_number;
@@ -11,6 +12,14 @@ public class AuditoriumDTO {
 		this.auditorium_name=auditorium_name;
 		this.seat_number=seat_number;
 		
+	}
+	
+	public int getAuditorium_id() {
+		return auditorium_id;
+	}
+	
+	public void setAuditorium_id(int id) {
+		this.auditorium_id = id;
 	}
 
 	public int getTheater_id() {

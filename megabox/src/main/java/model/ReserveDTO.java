@@ -6,6 +6,7 @@ import java.util.*;
 
 public class ReserveDTO {
 
+	int reserve_id;
 	int customer_id;
 	int schedule_id;
 	Date date;
@@ -27,6 +28,14 @@ public class ReserveDTO {
 		this.customer_count=customer_count;
 		this.price_sum=price_sum;
 
+	}
+	
+	public int getReserve_id() {
+		return reserve_id;
+	}
+	
+	public void setReserve_id(int id) {
+		this.reserve_id = id;
 	}
 
 	public int getCustomer_id() {
