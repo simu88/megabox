@@ -30,14 +30,14 @@ public class MovieService {
 	
 	//영화 정보 전체 조회
 	public static Vector viewAllMovies() throws SQLException {
-		Vector vc = MovieDAO.readAllMovies();
+		Vector<MovieDTO> vc = MovieDAO.readAllMovies();
 		
 		return vc;
 	}
 	
 	//제목으로 영화 검색해서 조회
 	public static Vector viewMovieByTitle(String title) throws SQLException {
-		Vector vc = MovieDAO.readMovieByTitle(title);
+		Vector<MovieDTO> vc = MovieDAO.readMovieByTitle(title);
 		
 		return vc;
 	}
@@ -45,7 +45,7 @@ public class MovieService {
 	//특정 영화 개수 내림차순으로 가져오기
 	public static Vector viewMovieLimit(int start, int end) throws SQLException {
 		//start 행부터 limit개를 가져옴. 처음부터 가져올 경우 start는 0
-		Vector vc = MovieDAO.readMovieBylimit(start, end);
+		Vector<MovieDTO> vc = MovieDAO.readMovieBylimit(start, end);
 		
 		return vc;
 	}
