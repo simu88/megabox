@@ -89,7 +89,7 @@ public class MovieDAO {
 		
 		Vector<MovieDTO> vector = new Vector<>();
 		
-		MovieDTO movieDTO = null;
+		MovieDTO movieDTO = new MovieDTO("", "", "", null, "", "", "", "", 0, "", "", 0, 1.2, 0);
 		
 		pstmt = con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
@@ -137,7 +137,7 @@ public class MovieDAO {
 		
 		Vector<MovieDTO> vector = new Vector<>();
 		
-		MovieDTO movieDTO = null;
+		MovieDTO movieDTO = new MovieDTO("", "", "", null, "", "", "", "", 0, "", "", 0, 1.2, 0);
 		
 		pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, title);
@@ -188,7 +188,7 @@ public class MovieDAO {
 	
 		Vector<MovieDTO> vector = new Vector<>();
 		
-		MovieDTO movieDTO = null;
+		MovieDTO movieDTO = new MovieDTO("", "", "", null, "", "", "", "", 0, "", "", 0, 1.2, 0);
 		
 		pstmt = con.prepareStatement(sql);
 		pstmt.setInt(1, start);
